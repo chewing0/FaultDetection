@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 import re
 
-database_path = r'XW\code\txt2vec\error_database\database.csv'
+database_path = r'XW\FaultDetection\txt2vec\error_database\database.csv'
 # 核心功能
 # Anomaly_Detection：通过和正常值的对比进行异常检测
 # vec_save：保存日志向量
@@ -111,7 +111,7 @@ def vec_save():
     csv_filepath = database_path
     csv_file = open(csv_filepath, 'a', newline='', encoding='utf-8-sig')
     writer = csv.writer(csv_file)
-    err_text = open_file(title='请选择需要在故障库的异常日志')
+    err_text = open_file(title='请选择需要存储在故障库的异常日志')
     err_text = text_deal(err_text)
     err_vec = get_vec(err_text)
     err_type = input('请输入错误类型：')
@@ -162,5 +162,5 @@ def error_type(log_vec, vectors, errs):
     return errs[idx]
 
 # 模型加载
-model = SentenceTransformer(r'XW\code\txt2vec\hugface-model\models--sentence-transformers--all-MiniLM-L6-v2\snapshots\c9745ed1d9f207416be6d2e6f8de32d1f16199bf')
+model = SentenceTransformer(r'XW\FaultDetection\txt2vec\hugface-model\models--sentence-transformers--all-MiniLM-L6-v2\snapshots\c9745ed1d9f207416be6d2e6f8de32d1f16199bf')
 # model = SentenceTransformer(r'XW\code\txt2vec\hugface-model\qwen')
